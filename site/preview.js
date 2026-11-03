@@ -1,11 +1,12 @@
 import { normalizeSkin, BUILTIN_ANIMATIONS } from './runtime/skin.js';
 import { frameAt, motionAt } from './runtime/pet-state.js';
 const authors = ['zhengyici', 'erich207', 'mosterpath'];
+const stateLabels = { idle: '待机', think: '思考', attention: '需要关注', done: '完成', failed: '失败', sleep: '睡觉', drag: '拖动', react: '互动', peek: '探头', greet: '问候' };
 for (const author of authors) {
   const id = `nailong-${author}`, base = `skins/${id}/`;
   const section = document.createElement('section');
   section.id = id;
-  section.innerHTML = `<h2>奶龙 · ${author}</h2><p class="note">${author === 'mosterpath' ? '静态表情与笑声 GIF 转换动画；不播放声音。' : '原始精灵图动画；部分状态复用，详见素材说明。'}</p><div class="stage"><canvas aria-label="${author} 桌宠预览"></canvas></div><div class="controls"><label>状态 <select class="state">${BUILTIN_ANIMATIONS.map(s => `<option>${s}</option>`).join('')}</select></label><button type="button" class="play">暂停</button><label>缩放 <select class="zoom"><option value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label><label>背景 <select class="background"><option value="light">浅色棋盘</option><option value="dark">深色棋盘</option></select></label></div><p role="status" class="status">加载中…</p>`;
+  section.innerHTML = `<h2>奶龙 · ${author}</h2><p class="note">${author === 'mosterpath' ? '静态表情与笑声 GIF 转换动画；不播放声音。' : '原始精灵图动画；部分状态复用，详见素材说明。'}</p><div class="stage"><canvas aria-label="${author} 桌宠预览"></canvas></div><div class="controls"><label>状态 <select class="state">${BUILTIN_ANIMATIONS.map(s => `<option value="${s}">${stateLabels[s]}</option>`).join('')}</select></label><button type="button" class="play">暂停</button><label>缩放 <select class="zoom"><option value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label><label>背景 <select class="background"><option value="light">浅色棋盘</option><option value="dark">深色棋盘</option></select></label></div><p role="status" class="status">加载中…</p>`;
   document.querySelector('#pets').append(section);
   const status = section.querySelector('.status');
   try {

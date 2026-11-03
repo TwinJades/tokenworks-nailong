@@ -28,6 +28,8 @@ GitHub 安装只安装品牌，**不会顺带安装三个桌宠**。仓库包含
 
 ### 桌宠：使用选择安装工具
 
+当前版本没有官方第三方形象导入入口：[官方桌宠指南](https://github.com/ECNU/EduWork/blob/main/docs/DESKTOP_PET.md#形象包)说明形象通过 PR 内置、应用内不提供导入。因此仅桌宠保留本工具，品牌不重复实现官方安装器。
+
 需要 Windows、Node.js 22 或以上及已安装的 TokenWorks。先完全退出应用（含托盘），双击 `install.cmd`，仅选择需要的桌宠。不默认全选，空选择取消。
 
 ```sh
