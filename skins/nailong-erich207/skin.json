@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "id": "nailong-erich207",
+  "name": "奶龙 · erich207",
+  "author": "erich207",
+  "frame": {
+    "width": 192,
+    "height": 208
+  },
+  "animations": {
+    "idle": {
+      "sheet": "sheet.webp",
+      "columns": 8,
+      "row": 0,
+      "frames": 7,
+      "fps": 8
+    },
+    "think": {
+      "sheet": "sheet.webp",
+      "columns": 8,
+      "row": 8,
+      "frames": 6,
+      "fps": 8
+    },
+    "attention": {
+      "sheet": "sheet.webp",
+      "columns": 8,
+      "row": 6,
+      "frames": 6,
+      "fps": 8
+    },
+    "done": {
+      "sheet": "sheet.webp",
+      "columns": 8,
+      "row": 4,
+      "frames": 5,
+      "fps": 8
+    },
+    "failed": {
+      "sheet": "sheet.webp",
+      "columns": 8,
+      "row": 5,
+      "frames": 8,
+      "fps": 8
+    },
+    "drag": {
+      "sheet": "sheet.webp",
+      "columns": 8,
+      "row": 1,
+      "frames": 8,
+      "fps": 8
+    },
+    "react": {
+      "sheet": "sheet.webp",
+      "columns": 8,
+      "row": 3,
+      "frames": 4,
+      "fps": 8
+    },
+    "peek": {
+      "sheet": "sheet.webp",
+      "columns": 8,
+      "row": 6,
+      "frames": 6,
+      "fps": 8
+    },
+    "greet": {
+      "sheet": "sheet.webp",
+      "columns": 8,
+      "row": 3,
+      "frames": 4,
+      "fps": 8
+    },
+    "sleep": {
+      "image": "sleep.png"
+    }
+  }
+}
