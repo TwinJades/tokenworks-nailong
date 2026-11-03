@@ -21,4 +21,9 @@
 - 隔离宿主日志报告缺失依赖 `@earendil-works/pi-ai/dist/providers/data/amazon-bedrock.json`，使 OIDC 插件导入失败；未修复宿主依赖，未验证真实账号登录。
 - 真实用户安装仅撤销此前品牌：产品 composition、运行时依赖、generated-profile 条目精确移除，旧包与 profile 联接送回收站。核对的86个应用配置、会话、存储、记忆库及原皮肤文件哈希未变。五原皮肤仍通过读取；新四组件均未安装到真实应用。
 
-还原后的真实应用窗口未重新打开观察，因此结论是磁盘还原完成；用户下次启动确认原品牌。GitHub 仓库未创建、未推送，Pages 未上线。
+初始还原后的真实应用窗口未重新打开观察，因此当时结论是磁盘还原完成；用户之后自行测试的安装不在该还原记录范围内。
+
+## GitHub 与 Pages
+
+- 公开仓库：https://github.com/TwinJades/tokenworks-nailong 。已上传正式bundle补丁、构建产物及素材声明，无用户数据或隔离profile。
+- Pages：https://twinjades.github.io/tokenworks-nailong/ 。GitHub Actions 运行41682932091部署成功；真实浏览器确认三宠物数据加载完成、图片成功、页面无运行错误。

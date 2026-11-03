@@ -3,7 +3,7 @@
 为 Windows TokenWorks 提供一个品牌插件与三款桌宠，四组件独立选择安装。
 
 <!-- preview-link:start -->
-**[点击预览](https://twinjades.github.io/tokenworks-nailong/)** · Pages 需要按发布指南启用；设置链接不代表已上线。
+**[点击预览](https://twinjades.github.io/tokenworks-nailong/)** · 品牌截图与三款桌宠十状态交互预览。
 <!-- preview-link:end -->
 
 | 组件 | 说明 | 来源 | 预览 |
@@ -81,7 +81,7 @@ GitHub 仓库用于品牌插件安装；Pages 为独立预览站点，上传仓�
 3. 在 **Settings → Pages → Source** 选择 **GitHub Actions**。
 4. `.github/workflows/pages.yml` 上传 `site` 并部署；等待 Actions 成功后检查实际地址。
 
-配置链接不代表站点已发布。表格预览使用相对链接，可在本地站点访问。
+当前仓库 Pages 已部署并通过浏览器加载验证。Fork 到其他仓库时需重新配置链接与 Pages；图片相对路径兼容项目子路径。
 
 ## 素材与许可
 

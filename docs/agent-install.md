@@ -4,7 +4,7 @@
 
 ## 品牌
 
-通过 TokenWorks 插件页的正式添加入口，添加本项目的 GitHub 仓库地址或本地项目路径，并由宿主插件管理器管理；仓库地址尚未确定时不要编造，使用可用的本地项目路径或向用户索取实际地址。品牌的启用、状态和卸载也在插件页或宿主管理器中操作。不要手写 product composition、依赖、profile 或其他补丁。桌宠安装器拒绝任何包含 `brand` 的安装请求，整次请求不会写入。
+通过 TokenWorks 插件页的正式添加入口，添加 `https://github.com/TwinJades/tokenworks-nailong` 或本地项目绝对路径，并由宿主插件管理器管理。填写在上方插件地址输入框，不是下方 npm 自定义 registry。品牌启用、状态和卸载均在插件页或宿主管理器中操作。不要手写 product composition、依赖、profile 或其他补丁。桌宠安装器拒绝任何包含 `brand` 的安装请求，整次请求不会写入。
 
 如果此前曾使用旧版安装器安装品牌，可在用户明确要求迁移清理时使用 `node scripts/install.mjs status --components brand` 检查旧记录，再用 `node scripts/install.mjs uninstall --components brand --root "<TokenWorks根目录>" --profile "<原桌面profile目录>" --dry-run` 预演并去掉 `--dry-run` 执行。此状态仅表示旧安装器管理的记录，不代表正式插件管理器中的状态。旧记录的文件哈希或配置不匹配时拒绝卸载，不要绕过保护；没有旧记录时不要以此清理陌生插件。
 
