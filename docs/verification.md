@@ -27,3 +27,6 @@
 
 - 公开仓库：https://github.com/TwinJades/tokenworks-nailong 。已上传正式bundle补丁、构建产物及素材声明，无用户数据或隔离profile。
 - Pages：https://twinjades.github.io/tokenworks-nailong/ 。GitHub Actions 运行41682932091部署成功；真实浏览器确认三宠物数据加载完成、图片成功、页面无运行错误。
+- 远程 GitHub 地址已在真实隔离 Electron 插件页安装成功，source 记录 `github:TwinJades/tokenworks-nailong`，列表显示品牌且可启用。一次直接卸载后列表、依赖与 bundle 记录已移除，但品牌视觉残留；后续带诊断的同路径卸载返回 `application: applied`，graph 移除模块、observer 停止且原品牌恢复。问题未稳定重现、根因未确认，未做猜测性代码修改，不能宣称已修复。若遇卸载后残留，完全退出应用再启动，并保留宿主诊断供定位。
+- 用户最新品牌截图已原字节上线，SHA256 为 `859c2cc377caa639df43514c2b672ce7066a7d058757fae1340bf35714bbaa5e`；预览十状态已显示中文，内部 ID 不变，线上浏览器已操作验证。
+- 当前本机桌宠 README 和官方指南均明确不提供第三方形象包导入；保留桌宠安装工具，品牌仅走官方插件管理器。
