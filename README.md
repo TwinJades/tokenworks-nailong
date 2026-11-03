@@ -13,7 +13,7 @@
 | `nailong-erich207` | 精灵图动画；部分状态复用 | [erich207/nailong-codex-pet](https://github.com/erich207/nailong-codex-pet) | [![erich207 待机](site/assets/nailong-erich207.gif)](https://twinjades.github.io/tokenworks-nailong/#nailong-erich207) |
 | `nailong-mosterpath` | 静态表情与笑 GIF 转换动画，无声音；保留原图背景 | [mosterpath/pet-nailong](https://github.com/mosterpath/pet-nailong) | [![mosterpath 待机](site/assets/nailong-mosterpath.gif)](https://twinjades.github.io/tokenworks-nailong/#nailong-mosterpath) |
 
-品牌截图由用户提供，展示旧版图标；实际打包图标为用户选定的白底挥手奶龙。桌宠进入现有 **设置 → 桌面宠物** 图库，不运行额外的桌宠程序。mosterpath 待机素材为静态图，缩略 GIF 不代表具有原生逐帧待机动作。
+品牌截图由用户提供，展示当前挥手奶龙品牌及桌面宠物。桌宠进入现有 **设置 → 桌面宠物** 图库，不运行额外的桌宠程序。mosterpath 待机素材为静态图，缩略 GIF 不代表具有原生逐帧待机动作。
 
 ## 安装与卸载
 
