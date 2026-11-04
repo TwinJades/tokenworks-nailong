@@ -86,7 +86,7 @@ b=把下面提示词发给 Agent,让 Agent 帮你下载并打开安装窗口，�
 
 ## 📄 许可与素材声明
 
-- **项目代码与用户素材**：本项目自有源码基于 [MIT 协议](LICENSE) 开源。`assets/nailong.png` 图标由用户声明为其 AI 生成、应用预览截图由用户自行截取，用户均按 MIT 协议分发（如实记录用户声明，不保证 AI 生成内容必然具有版权）。
+- **项目代码与用户素材**：本项目自有源码基于 [MIT 协议](LICENSE) 开源。`assets/nailong.png` 图标由我用 AI 生成、应用预览截图是我自行截取，均按 MIT 协议分发。
 - **第三方桌宠素材**：三款桌宠均按其原作者仓库标注的 MIT 协议收录，并完整保留原作者署名、源仓库链接与许可证文件：
   - `nailong-zhengyici`：源自 [Zhengyici/nailong-pet-skill](https://github.com/Zhengyici/nailong-pet-skill)
   - `nailong-erich207`：源自 [erich207/nailong-codex-pet](https://github.com/erich207/nailong-codex-pet)
