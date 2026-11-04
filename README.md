@@ -8,7 +8,7 @@
 
 | 组件 | 说明 | 来源 | 预览 |
 | --- | --- | --- | --- |
-| `brand` | 奶龙工坊品牌文字与图标替换 | 本项目代码；图标由用户提供（AI 生成 / MIT） | [![品牌截图](site/assets/brand-preview.png)](https://twinjades.github.io/tokenworks-nailong/#brand) |
+| `brand` | 奶龙工坊品牌文字与图标替换 | 我的截图，图标由 AI 生成 | [![品牌截图](site/assets/brand-preview.png)](https://twinjades.github.io/tokenworks-nailong/#brand) |
 | `nailong-zhengyici` | 精灵图逐帧动画；部分状态复用 | [Zhengyici/nailong-pet-skill](https://github.com/Zhengyici/nailong-pet-skill) | [![Zhengyici 待机](site/assets/nailong-zhengyici.gif)](https://twinjades.github.io/tokenworks-nailong/#nailong-zhengyici) |
 | `nailong-erich207` | 精灵图逐帧动画；部分状态复用 | [erich207/nailong-codex-pet](https://github.com/erich207/nailong-codex-pet) | [![erich207 待机](site/assets/nailong-erich207.gif)](https://twinjades.github.io/tokenworks-nailong/#nailong-erich207) |
 | `nailong-mosterpath` | 已透明化静态表情与笑动画（71 图 / 64 帧 4300ms 循环），无声音 | [mosterpath/pet-nailong](https://github.com/mosterpath/pet-nailong) | [![mosterpath 待机](site/assets/nailong-mosterpath.gif)](https://twinjades.github.io/tokenworks-nailong/#nailong-mosterpath) |
