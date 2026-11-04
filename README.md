@@ -1,4 +1,4 @@
-# 奶龙工坊 · 品牌与内置桌宠
+nailong-mosterpath# 奶龙工坊 · 品牌与内置桌宠
 
 为 Windows TokenWorks 提供一个品牌插件与三款桌宠，四组件独立选择安装。
 
@@ -76,16 +76,6 @@ npm run preview
 
 品牌构建无需新增 npm 依赖。预览缩略图生成需要 Python 3 与 Pillow（本机验证版本 12.3.0）；`python -m pip install Pillow==12.3.0`。站点复用安装皮肤数据及宿主播放规则；十状态切换、暂停、缩放和棋盘背景均可操作。`http://127.0.0.1:4173/repo/` 可验证 Pages 子路径。
 
-## 发布 GitHub Pages
-
-GitHub 仓库用于品牌插件安装；Pages 为独立预览站点，上传仓库不代表 Pages 已启用。发布预览时：
-
-1. 执行 `node scripts/configure-pages.mjs --repo owner/repo` 设置 README 预览入口。
-2. 构建并将项目上传到该仓库的 `main` 分支。
-3. 在 **Settings → Pages → Source** 选择 **GitHub Actions**。
-4. `.github/workflows/pages.yml` 上传 `site` 并部署；等待 Actions 成功后检查实际地址。
-
-当前仓库 Pages 已部署并通过浏览器加载验证。Fork 到其他仓库时需重新配置链接与 Pages；图片相对路径兼容项目子路径。
 
 ## 素材与许可
 
