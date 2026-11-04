@@ -55,7 +55,7 @@ node scripts/install.mjs uninstall --components nailong-erich207
 
 复制以下提示词，并将方括号占位内容替换为具体组件；保留占位符时 Agent 必须询问，不能全装：
 
-> 请阅读这个项目的 docs/agent-install.md，按其中步骤为我的词元工坊安装：[在此处写下你要安装的东西即可]。只安装我指定的组件，保留现有配置，安装后验证并告诉我是否需要重启。
+> 请阅读https://github.com/TwinJades/tokenworks-nailong这个项目的 docs/agent-install.md，按其中步骤为我的词元工坊安装：[在此处写下你要安装的东西即可]。只安装我指定的组件，保留现有配置，安装后验证并告诉我是否需要重启。
 
 参见 [Agent 安装指南](docs/agent-install.md)。品牌走正式插件管理器，桌宠调用选择安装工具；不能自行手写产品装配补丁。
 
