@@ -20,10 +20,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-Scope: this license covers original project code and documentation only.
-Third-party code retains its own copyright and license notices. Character
-artwork, user-provided images, screenshots, and third-party pet artwork are
-not relicensed by this file. See assets/NOTICE.md, third-party/, skin SOURCE.md
-and UPSTREAM-* notices, and site/runtime/LICENSE for their provenance and
-applicable rights. Alpha masks and format conversion do not transfer rights
-to the underlying character artwork.
+Scope: this license covers original project code and documentation, and the
+user-provided brand images and application screenshots that the contributor
+has expressly offered under MIT. See assets/NOTICE.md for that declaration.
+Third-party contributions are distributed with their upstream MIT licenses,
+copyright notices and source records; see third-party/, skin SOURCE.md and
+UPSTREAM-* notices, and site/runtime/LICENSE. This license makes no claim to
+ownership of third-party character trademarks or other independently held
+rights. Image conversion and alpha masks do not transfer underlying rights.
