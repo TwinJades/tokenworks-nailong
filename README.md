@@ -79,18 +79,6 @@ TokenWorks 原生支持从 GitHub 或本地目录添加插件：
 
 ---
 
-## 🛠️ 构建与本地预览
-
-```sh
-node build.mjs                  # 构建品牌前端脚本
-node scripts/build-previews.mjs # 生成桌宠预览数据与待机 GIF
-npm run preview                 # 启动本地静态预览站 (http://127.0.0.1:4173)
-```
-- 品牌构建开箱即用，无新增 npm 依赖。
-- 预览缩略图脚本需要 Python 3 及 Pillow（`python -m pip install Pillow==12.3.0`）。
-
----
-
 ## 📄 许可与素材声明
 
 - **项目代码与用户素材**：本项目自有源码基于 [MIT 协议](LICENSE) 开源。`assets/nailong.png` 图标由用户声明为其 AI 生成、应用预览截图由用户自行截取，用户均按 MIT 协议分发（如实记录用户声明，不保证 AI 生成内容必然具有版权）。
