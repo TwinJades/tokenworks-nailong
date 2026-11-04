@@ -13,7 +13,7 @@ npm run preview
 
 品牌仓库包含构建产物，使用“添加插件”安装无需运行上述命令，也没有安装时构建脚本。`npm pack --dry-run --json` 可检查品牌发布包：须包含 package.json、cordis.patch.yml、lib、locale 与图标/声明，不含皮肤和本机配置。安装器仅对三桌宠执行新安装；`brand` 的状态及旧卸载仅用于迁移清理。
 
-`prepare-skins.py` 只使用 third-party 已锁定素材，不联网，输出三款十状态皮肤及随包声明并更新输出哈希；原始素材哈希保留。站点复制安装数据，README GIF 从真实 idle 帧生成；mosterpath idle 只有一帧。GIF 使用白衬底避免透明调色板边缘，安装图片不强行去底。
+`prepare-skins.py` 只使用 third-party 已锁定素材及 `assets/mosterpath-masks/` 已收录遮罩，不联网，输出三款十状态皮肤及随包声明并更新输出哈希；原始素材哈希保留。mosterpath 全部71张图片只改变alpha、不重绘角色。常规重建只需Pillow；重新生成遮罩才需 `rembg==2.0.69`、`onnxruntime==1.23.2` 和u2net模型，运行 `python scripts/mask-mosterpath.py` 后实看边缘。站点复制安装数据，GIF从真实idle帧生成；mosterpath idle只有一帧，GIF预览白色衬底不等于安装图片有白底。
 
 `site/runtime/` 保留目标应用原版 normalizeSkin、frameAt、motionAt 及 LICENSE。宿主升级应重新验证，不仅测试网页。
 

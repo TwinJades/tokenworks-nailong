@@ -83,6 +83,22 @@ with Image.open(source / 'laugh.gif') as gif:
             duration += max(1, gif.info.get('duration', 100))
         durations.append(duration)
     skin['animations']['done'] = {'frames': frames, 'frameMs': durations, 'playback': 'loop'}
+# Apply committed alpha masks to the original fitted RGB pixels. This keeps
+# routine rebuilds deterministic and avoids requiring inference dependencies.
+from PIL import ImageChops
+for image_path in target.iterdir():
+    if image_path.suffix not in ['.png', '.webp']:
+        continue
+    mask_path = ROOT / 'assets/mosterpath-masks' / (image_path.stem + '.png')
+    if not mask_path.is_file():
+        raise FileNotFoundError(f'Missing reviewed foreground mask: {mask_path}')
+    with Image.open(image_path) as original, Image.open(mask_path) as mask:
+        result = original.convert('RGBA')
+        result.putalpha(ImageChops.multiply(result.getchannel('A'), mask.convert('L')))
+        if image_path.suffix == '.webp':
+            result.save(image_path, lossless=True, method=6)
+        else:
+            result.save(image_path, optimize=True)
 save_manifest(target, skin)
 
 # Notices travel with each installed skin, not only with the source repository.
