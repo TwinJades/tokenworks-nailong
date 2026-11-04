@@ -42,7 +42,17 @@ TokenWorks 原生支持从 GitHub 或本地目录添加插件：
 
 💡 用完可以删除下载、解压的仓库目录，不影响已安装的桌宠；以后卸载或更新时可能还需要，请保留一份或重新下载。品牌若通过本地目录链接安装，则不要删除其链接目录。
 
-**使用命令打开**：下载解压后，在项目文件夹的 PowerShell 中运行 `Start-Process .\install.cmd`；后续交互仍由你操作，不需要记组件安装命令。
+**⚡ 一键下载安装**：先退出 TokenWorks（含托盘），在任意 PowerShell 窗口粘贴以下整段命令。它会自动下载仓库、解压并打开 `install.cmd`，后续选项由你操作：
+
+```powershell
+$ErrorActionPreference = 'Stop'
+$dir = Join-Path $env:TEMP ('tokenworks-nailong-' + [guid]::NewGuid().ToString('N'))
+New-Item -ItemType Directory -Path $dir | Out-Null
+Invoke-WebRequest -Uri 'https://github.com/TwinJades/tokenworks-nailong/archive/refs/heads/main.zip' -OutFile (Join-Path $dir 'repo.zip')
+Expand-Archive -LiteralPath (Join-Path $dir 'repo.zip') -DestinationPath $dir
+$project = Join-Path $dir 'tokenworks-nailong-main'
+Start-Process -FilePath (Join-Path $project 'install.cmd') -WorkingDirectory $project
+```
 
 ### 🔄 从旧版品牌安装迁移
 
