@@ -1,22 +1,34 @@
-# Agent 安装指南
+# 🤖 Agent 下载与启动指南
 
-仅支持 Windows 上的 TokenWorks。先询问用户要安装或卸载哪些组件；如果用户仍使用“在此处写下你要安装的东西即可”占位符，必须询问，不能默认全选。组件为品牌 `brand` 和三个桌宠 `nailong-zhengyici`、`nailong-erich207`、`nailong-mosterpath`。只操作用户明确选择的组件。
+## 环境与意图
 
-## 品牌
+仅支持 Windows TokenWorks；桌宠安装窗口需要 Node.js 22 或以上。先检查环境。用户仍保留 `[在此处写下你要安装的东西即可]` 时，询问想安装什么，不默认全装。不替用户安装依赖或修改应用配置；缺少环境时说明缺什么。
 
-通过 TokenWorks 插件页的正式添加入口，添加 `https://github.com/TwinJades/tokenworks-nailong` 或本地项目绝对路径，并由宿主插件管理器管理。填写在上方插件地址输入框，不是下方 npm 自定义 registry。品牌启用、状态和卸载均在插件页或宿主管理器中操作。不要手写 product composition、依赖、profile 或其他补丁。桌宠安装器拒绝任何包含 `brand` 的安装请求，整次请求不会写入。
+## 🐾 桌宠：下载并打开 install.cmd 即止
 
-如果此前曾使用旧版安装器安装品牌，可在用户明确要求迁移清理时使用 `node scripts/install.mjs status --components brand` 检查旧记录，再用 `node scripts/install.mjs uninstall --components brand --root "<TokenWorks根目录>" --profile "<原桌面profile目录>" --dry-run` 预演并去掉 `--dry-run` 执行。此状态仅表示旧安装器管理的记录，不代表正式插件管理器中的状态。旧记录的文件哈希或配置不匹配时拒绝卸载，不要绕过保护；没有旧记录时不要以此清理陌生插件。
+1. 下载 https://github.com/TwinJades/tokenworks-nailong/archive/refs/heads/main.zip ，解压到新的本地目录；若已有用户指定且完整的仓库目录，直接复用，不覆盖用户文件。
+2. 提醒用户完全退出 TokenWorks（包括系统托盘），不强杀应用。
+3. 用独立可见窗口打开解压后项目根目录的 `install.cmd`。PowerShell 示例：
 
-## 桌宠
+   ```powershell
+   Start-Process -FilePath "C:\实际解压目录\tokenworks-nailong-main\install.cmd" -WorkingDirectory "C:\实际解压目录\tokenworks-nailong-main"
+   ```
 
-操作前请用户完全退出 TokenWorks，包括系统托盘。在项目目录运行，例如仅安装 erich207：
+   使用实际绝对路径，不能照抄示例占位路径。不要加 install/uninstall 或组件参数。
+4. 告诉用户安装窗口已打开，由用户自行选择安装、卸载和桌宠编号。**到这里停止**，不代输选项、不直接调用 `scripts/install.mjs` 安装、不修改产品装配、profile或皮肤目录。
 
-```powershell
-node scripts/install.mjs install --components nailong-erich207 --root "<TokenWorks根目录>" --dry-run
-node scripts/install.mjs install --components nailong-erich207 --root "<TokenWorks根目录>"
+窗口打开不等于安装成功；不要报告“已安装”或宣称已验证原生桌宠。用户完成安装后需重启 TokenWorks，在“设置 → 桌面宠物”选择形象。打开失败时报告实际错误，不回退到静默安装。
+
+下载压缩包和解压目录用完可以删除，不影响复制安装的桌宠；以后卸载或更新时可能需要重新下载。Agent 不自动删除用户下载的目录；如用户要求删除，必须送回收站。
+
+## 🎨 品牌：使用官方插件页
+
+引导用户进入 TokenWorks 的“插件 → 添加插件”，在上方插件地址框填写：
+
+```text
+https://github.com/TwinJades/tokenworks-nailong
 ```
 
-默认根目录为 `%LOCALAPPDATA%\Programs\TokenWorks`；只装宠物不需要 profile。卸载把 `install` 改成 `uninstall`，并指定组件；状态可用 `node scripts/install.mjs status --components nailong-erich207`。所有操作都可加 `--dry-run` 预演。`install.cmd` 可双击交互选择，空选择取消。对冲突或报错不要绕过保护，不自行修改安装目录、profile、配置或注册项。
+不是下方 npm 自定义 registry。品牌的启停和卸载由官方插件管理器完成；`install.cmd` 不负责新品牌安装。通过本地路径链接安装的品牌依赖该目录，不能套用桌宠的“用完可删除目录”说明。
 
-操作后通过对应管理器或安装器检查所选组件的状态，报告结果与任何异常；完全退出后重新启动 TokenWorks 才能刷新皮肤图库。不要将网页预览当成原生图库验证。安装器不修改宠物开关、选择、凭据和个人配置；卸载遇到修改过的管理文件会拒绝删除，请向用户说明。
+旧式品牌迁移清理仅在用户明确要求时按 README 的迁移说明处理；不要自动清理陌生文件或绕过安装器保护。

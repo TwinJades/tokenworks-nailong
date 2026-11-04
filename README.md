@@ -39,38 +39,15 @@ TokenWorks 原生支持从 GitHub 或本地目录添加插件：
 > 📌 **说明**：通过 GitHub 插件管理器安装只会安装品牌插件，**不会**安装桌宠。仓库自带预编译产物，无需 Python 或额外构建。  
 > ⚠️ **偶发视觉残留提示**：测试中偶遇卸载后界面品牌未即时刷新的情况。若遇到，请先核对插件列表状态，再完全退出应用（含系统托盘）重开；该间歇问题根因尚未确认。
 
-### 🐾 2. 桌宠安装（使用专属选择安装工具）
+### 🐾 2. 下载并安装桌宠
 
-由于当前 TokenWorks 官方尚未开放第三方形象的界面导入入口（原生形象均需内置），桌宠组件通过本项目提供的安全工具注入至皮肤图库。
+**环境要求**：Windows、已安装 TokenWorks、[Node.js 22 或以上](https://nodejs.org/)。
 
-**环境要求**：Windows 系统、已安装 TokenWorks、Node.js 22+。
+点击 **[下载仓库 ZIP](https://github.com/TwinJades/tokenworks-nailong/archive/refs/heads/main.zip)** → 完整解压 → 退出 TokenWorks（含托盘）→ 双击 **`install.cmd`**，按窗口提示选择安装或卸载。装好后重启，在 **设置 → 桌面宠物** 选择形象。
 
-**安装步骤**：
-1. 在仓库页面点击右上角 **Code → Download ZIP** 下载并解压（或使用 `git clone`）。
-2. ⚠️ **完全退出 TokenWorks（请务必检查并退出 Windows 右下角系统托盘中的图标！）**。
-3. 双击解压目录中的 `install.cmd`：
-   - 输入 `1`（安装）；
-   - 终端会列出桌宠列表，输入你想安装的宠物编号（如 `1`、`2`、`3`，支持逗号分隔多选；空回车直接取消，绝不默认全选）；
-   - 工具安全写入，删除的旧文件送回收站；失败仅回滚本次操作。
-4. 重新启动 TokenWorks，进入 **设置 → 桌面宠物**，即可在图库中选择并启用你安装的奶龙桌宠！🎉
+💡 用完可以删除下载、解压的仓库目录，不影响已安装的桌宠；以后卸载或更新时可能还需要，请保留一份或重新下载。品牌若通过本地目录链接安装，则不要删除其链接目录。
 
-#### 💻 高级选项 / CLI 命令行调用
-熟悉终端的用户可直接运行命令行：
-```sh
-# 查看当前安装状态
-node scripts/install.mjs status
-
-# 预演安装（dry-run 仅演练不写入）
-node scripts/install.mjs install --components nailong-erich207 --dry-run
-
-# 安装指定桌宠
-node scripts/install.mjs install --components nailong-erich207
-
-# 卸载指定桌宠
-node scripts/install.mjs uninstall --components nailong-erich207
-```
-- **非默认安装路径**：若你的 TokenWorks 安装在自定义目录，可追加 `--root "TokenWorks根目录路径"` 参数。
-- **安全防护**：删除操作均送入系统回收站；若检测到陌生同名目录或修改冲突，工具会严格中止并报错，绝不强行覆盖或删除。
+**使用命令打开**：下载解压后，在项目文件夹的 PowerShell 中运行 `Start-Process .\install.cmd`；后续交互仍由你操作，不需要记组件安装命令。
 
 ### 🔄 从旧版品牌安装迁移
 
@@ -85,11 +62,11 @@ node scripts/install.mjs uninstall --components nailong-erich207
 
 ## 🤖 让 Agent 为你安装
 
-若你正在使用支持终端操作的 AI 助手，可直接复制以下提示词给 Agent：
+让 Agent 帮你下载并打开安装窗口，桌宠选项由你自己操作：
 
-> 请阅读 https://github.com/TwinJades/tokenworks-nailong 这个项目的 docs/agent-install.md，按其中步骤为我的词元工坊安装：[在此处写下你要安装的东西即可]。只安装我指定的组件，保留现有配置，安装后验证并告诉我是否需要重启。
+> 请阅读 https://github.com/TwinJades/tokenworks-nailong 这个项目的 docs/agent-install.md。我想安装：[在此处写下你要安装的东西即可]。如果是桌宠，请检查环境、下载并解压仓库，然后打开 install.cmd 交给我操作，不要替我选择或执行安装；如果是品牌，请引导我使用词元工坊官方插件页。
 
-*详细技术契约与安全约束请参阅 [Agent 安装指南](docs/agent-install.md)。*
+详见 [Agent 安装指南](docs/agent-install.md)。
 
 ---
 
