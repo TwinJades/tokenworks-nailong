@@ -202,3 +202,17 @@ test('explicit three-pet install and selective uninstall preserve remaining comp
   assert.ok(fs.existsSync(path.join(f.skins, 'existing', 'skin.json')));
   r = call(f, 'uninstall', 'nailong-erich207,nailong-mosterpath'); assert.equal(r.status, 0, r.stderr);
 });
+
+test('official brand is identified and legacy uninstall refuses without touching pets or profile', { skip: process.platform !== 'win32' }, t => {
+  const f = fixture(); t.after(() => clean(f.base));
+  const profilePath = path.join(f.profile, 'package.json');
+  write(profilePath, { name: 'eduwork-desktop-profile', dependencies: { '@nailong/tokenworks-brand': 'github:TwinJades/tokenworks-nailong' }, dsh: { profile: { bundles: ['@nailong/tokenworks-brand'] } } });
+  let result = call(f, 'install', pet); assert.equal(result.status, 0, result.stderr);
+  const tracked = [profilePath, path.join(f.runtime, 'package.json'), path.join(f.product, 'composition.json'), path.join(f.skins, pet, 'skin.json'), path.join(f.runtime, '.nailong-installer.json')];
+  const before = tracked.map(file => fs.readFileSync(file));
+  result = call(f, 'status', 'brand', ['--profile', f.profile]);
+  assert.equal(result.status, 0, result.stderr); assert.match(result.stdout, /官方插件管理器安装/); assert.match(result.stdout, /github:TwinJades/);
+  result = call(f, 'uninstall', `brand,${pet}`, ['--profile', f.profile]);
+  assert.notEqual(result.status, 0); assert.match(result.stderr, /不是旧版/); assert.match(result.stderr, /详情\/更多菜单/);
+  tracked.forEach((file, i) => assert.deepEqual(fs.readFileSync(file), before[i]));
+});

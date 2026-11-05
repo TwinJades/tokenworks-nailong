@@ -140,6 +140,20 @@ function requireSafeParents(p, boundary) {
   }
 }
 
+function managedBrandProfiles(explicit) {
+  const base = path.join(process.env.LOCALAPPDATA || '', 'tokenworks-electron', 'dsh', 'profiles');
+  const candidates = explicit ? [path.resolve(explicit)] : exists(base) ? fs.readdirSync(base).map(name => path.join(base, name)) : [];
+  return candidates.flatMap(directory => {
+    const manifest = path.join(directory, 'package.json');
+    if (!exists(manifest)) return [];
+    const info = json(manifest);
+    if (info.name !== 'eduwork-desktop-profile' || !info.dsh?.profile) return [];
+    const source = info.dependencies?.[brandName];
+    const selected = info.dsh.profile.bundles?.includes(brandName) === true;
+    return source || selected ? [{ directory, source, selected }] : [];
+  });
+}
+
 async function run(opts) {
   if (opts.action === 'install' && opts.ids.includes('brand')) fail('品牌不再由此工具安装；请在 TokenWorks 插件页添加本项目的 GitHub 仓库地址或本地项目路径。');
   const root = path.resolve(opts.root || path.join(process.env.LOCALAPPDATA || '', 'Programs', 'TokenWorks'));
@@ -148,6 +162,15 @@ async function run(opts) {
   const statePath = path.join(runtime, '.nailong-installer.json');
   const state = readState(statePath, canonicalRoot);
   const stateBefore = exists(statePath) ? fs.readFileSync(statePath) : null;
+  if (opts.ids.includes('brand') && !state.components.brand) {
+    const official = managedBrandProfiles(opts.profile);
+    if (official.length && opts.action === 'uninstall') {
+      fail(`检测到官方插件管理器安装的品牌，不是旧版产品装配安装。此工具不会删除它或其 pnpm 联接。请在 TokenWorks 侧栏“插件”→“已安装”→“奶龙工坊品牌”的详情/更多菜单中卸载；若宿主提示需要重启，请按提示操作。profile: ${official.map(item => item.directory).join(', ')}。本次未写入，桌宠未改动。`);
+    }
+    if (opts.action === 'status') for (const item of official) {
+      console.log(`brand: 官方插件管理器安装（${item.selected ? '已选入' : '未选入'}；不代表运行状态）；来源: ${item.source ?? '未登记依赖'}；profile: ${item.directory}`);
+    }
+  }
   const packagePath = path.join(runtime, 'package.json');
   const compositionPath = path.join(product, 'composition.json');
   const pkg = json(packagePath), composition = json(compositionPath);
@@ -168,7 +191,10 @@ async function run(opts) {
     const dest = id === 'brand' ? brandDest : path.join(petRoot, id);
     requireSafeParents(dest, runtime);
     if (opts.action === 'status') {
-      if (!record) { console.log(`${id}: 未由本工具管理${exists(dest) ? '（存在同名文件）' : ''}`); continue; }
+      if (!record) {
+        if (id === 'brand' && managedBrandProfiles(opts.profile).length) continue;
+        console.log(`${id}: 未由本工具管理${exists(dest) ? '（存在同名文件）' : ''}`); continue;
+      }
       try {
         ensureOwnedDir(dest, record);
         if (id === 'brand') {
@@ -251,7 +277,7 @@ async function interactive() {
     if (action === 'status') { await run({ action, ids, dryRun: false }); return; }
     const choices = action === 'install' ? ids.filter(id => id !== 'brand') : ids;
     if (action === 'install') console.log('品牌请在 TokenWorks 插件页添加项目 GitHub 仓库地址或本地项目路径。');
-    choices.forEach((id, i) => console.log(`${i + 1}. ${id}${id === 'brand' ? '（旧版安装清理）' : ''}`));
+    choices.forEach((id, i) => console.log(`${i + 1}. ${id}${id === 'brand' ? '（仅清理旧版；官方版请到插件页卸载）' : ''}`));
     const selection = (await rl.question('输入组件编号，逗号分隔（空输入取消，不默认全选）: ')).trim();
     if (!selection) return;
     const selected = selection.split(/[,，\s]+/).map(x => choices[Number(x) - 1]);
