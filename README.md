@@ -32,7 +32,7 @@ TokenWorks 原生支持从 GitHub 或本地目录添加插件：
    ```
    *(亦可下载本仓库后，直接填入本地项目根目录的绝对路径)*
 3. ⚠️ **注意**：下方安装源保持 npm 官方源或大陆镜像即可。**“自定义地址”是 npm registry，请勿在自定义地址栏填写 GitHub 仓库地址**
-4. 点击安装后，在插件列表即可看到“奶龙工坊品牌”。启用、停用与卸载由官方插件管理器负责；按宿主提示重启。`install.cmd` 用于桌宠安装、卸载，以及有历史管理记录的旧版品牌清理。
+4. 点击安装后，在插件列表即可看到“奶龙工坊品牌”。启用、停用与卸载由官方插件管理器负责；按宿主提示重启。`install.cmd` 仅用于三款桌宠的安装与卸载。
 
 ### 🐾 2. 下载并安装桌宠
 
@@ -53,13 +53,6 @@ Expand-Archive -LiteralPath (Join-Path $dir 'repo.zip') -DestinationPath $dir
 $project = Join-Path $dir 'tokenworks-nailong-main'
 Start-Process -FilePath (Join-Path $project 'install.cmd') -WorkingDirectory $project
 ```
-
-### 🔄 从旧版品牌安装迁移
-
-若你此前曾使用早期脚本直接将品牌装配至产品底层目录：
-1. 先完全退出 TokenWorks（含托盘）。
-2. 运行 `node scripts/install.mjs uninstall --components brand` 清理历史管理记录（多 profile 时附加 `--profile` 参数）。
-3. 工具仅清理本工具记录过的条目，遇到陌生文件或冲突绝不强删。清理完成后重启应用，按照上方**官方插件页**方式重新添加即可。
 
 > 🛡️ 本工具绝不修改 `eduwork.jsonc`、认证地址、用户账号、凭据、对话记录，也不修改你现有的其他桌宠配置。
 

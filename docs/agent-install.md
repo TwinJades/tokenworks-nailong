@@ -31,4 +31,3 @@ https://github.com/TwinJades/tokenworks-nailong
 
 不是下方 npm 自定义 registry。品牌的启停和卸载由官方插件管理器完成；`install.cmd` 不负责新品牌安装。通过本地路径链接安装的品牌依赖该目录，不能套用桌宠的“用完可删除目录”说明。
 
-旧式品牌迁移清理仅在用户明确要求时按 README 的迁移说明处理；不要自动清理陌生文件或绕过安装器保护。
